@@ -1,0 +1,155 @@
+<template name="Garage">
+    {{> LayoutHeader}} {{> LayoutNav}}
+    <div class="page-container">
+        <div class="page-title">
+            <div class="page-header">
+                <span>
+                   Garage
+                </span>
+            </div>
+        </div>
+        <div class="content-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-block lw-card-transparent">
+                        <button class="btn create btn-success" data-target="#myModal" type="button">
+                            <i class="fa fa-upload" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="lw-table-border">
+                        <div class="warpper-table lw-table-border-body hidden-scroll-y table-responsive">
+                            {{> reactiveTable collection=Garage settings=tableSettings}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  ************************Modal************************-->
+            <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal" role="dialog" tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                <span aria-hidden="true">
+                            ×
+                        </span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">เพิ่มข้อมูล</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <div class="col-sm-12 text-left">
+                                    <div class="form-group row">
+                                        <label class="col-xs-2 col-form-label">
+                                            Name:
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <input class="form-control value_garage" type="text" id="name" field="name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xs-2 col-form-label">
+                                            Address:
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <textarea class="form-control value_garage" type="text" id="address" field="address"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xs-2 col-form-label">
+                                            District:
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <textarea class="form-control value_garage" type="text" id="district" field="district"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xs-2 col-form-label">
+                                            Province:
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <textarea class="form-control value_garage" type="text" id="province" field="province"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xs-2 col-form-label">
+                                            Latitude:
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <input class="form-control value_garage" type="text" id="latitude" field="latitude">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xs-2 col-form-label">
+                                            Longitude:
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <input class="form-control value_garage" type="text" id="longitude" field="longitude">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xs-2 col-form-label">
+                                            Phone:
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <input class="form-control value_garage" type="text" id="phone" field="phone">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xs-2 col-form-label">
+                                            E-mail:
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <input class="form-control value_garage" type="text" id="email" field="email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xs-2 col-form-label">
+                                            Website:
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <input class="form-control value_garage" type="text" id="website" field="website">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xs-2 col-form-label">
+                                            Queue:
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <input class="form-control value_garage" type="text" id="queue" field="queue">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xs-2 col-form-label">
+                                            Loaner Car:
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <input class="form-control value_garage" type="text" id="loaner_car" field="loaner_car">
+                                        </div>
+                                    </div>
+                                     <div class="form-group row">
+                                        <label class="col-xs-2 col-form-label">
+                                            GUID:
+                                        </label>
+                                        <div class="col-xs-10">
+                                            <input class="form-control value_garage" type="text" id="guid" field="guid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="save_changes btn btn-success">Save</button>
+                            <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  ************************ModalEDIT************************-->
+        </div>
+    </div>
+    {{> LayoutFooter}}
+</template>

@@ -1,0 +1,69 @@
+<template name="Edituser">
+  <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header page-title">
+                    <h4 class="modal-title">แก้ไขสมาชิก</h4>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <input type="text" class="form-control valueEdit" field="user_id" form-check=true field-type="int" hidden>
+                    <div class="form-group">
+                      <label>อีเมล:</label>
+                      <input type="email" class="form-control valueEdit" field="email" form-check=true>
+                    </div>
+                    <div class="form-group">
+                      <label>คำนำหน้าชื่อ:</label>
+                      <select class="form-control valueEdit" field="prename" form-check=true>
+                        <option value="คุณ" selected>คุณ</option>
+                        <option value="นาย">นาย</option>
+                        <option value="นาง">นาง</option>
+                        <option value="นางสาว">นางสาว</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>ชื่อ:</label>
+                      <input type="text" class="form-control valueEdit" field="firstname" form-check=true>
+                    </div>
+                    <div class="form-group">
+                      <label>นามสกุล:</label>
+                      <input type="text" class="form-control valueEdit" field="lastname" form-check=true>
+                    </div>
+                    <div class="form-group">
+                      <label>สถานะ:</label>
+                      <select class="form-control valueEdit" field="level" form-check=true>
+                        <option value="อาจารย์" selected>อาจารย์</option>
+                        <option value="ผู้ปกครอง">ผู้ปกครอง</option>
+                        <option value="นักเรียน">นักเรียน</option>
+                        <option value="บุคคลทั่วไป">บุคคลทั่วไป</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>เบอร์โทร:</label>
+                      <input type="tel" class="form-control valueEdit" field="tel" form-check=true>
+                    </div>
+                    <div class="form-group">
+                      <label>latitude:</label>
+                      <input type="tel" class="form-control valueEdit" field="latitude" field-type="float">
+                    </div>
+                    <div class="form-group">
+                      <label>longitude:</label>
+                      <input type="tel" class="form-control valueEdit" field="longitude" field-type="float">
+                    </div>
+                    <div class="form-group">
+                      <label>Device token:</label>
+                      <input type="tel" class="form-control valueEdit" field="devicetoken">
+                    </div>
+                    <div class="form-group">
+                      <input type="checkbox" class="valueEdit" field="active"> Active<br>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger fa fa-sign-out" data-dismiss="modal"></button>
+                    <button class="btn btn-success fa fa-floppy-o" id="btnEditUser"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

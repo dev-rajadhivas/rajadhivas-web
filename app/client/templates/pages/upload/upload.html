@@ -1,0 +1,109 @@
+<template name="Upload">
+    {{> LayoutHeader}} {{> LayoutNav}}
+    <div class="page-container">
+        <div class="page-title"><p>ข่าวสาร</p></div>
+        <div class="content-container">
+            <div class="row">
+              <div class="col-md-2">
+                <button class="btn btn-sm btn-success fa fa-plus" id="btnAddNews"><span class="btn-label"> เพิ่มข่าว</span></button>
+              </div>
+              <div class="col-md-6"></div>
+              <div class="col-md-4 form-inline" style="text-align:right">
+                <input type="text" class="form-control" style="height:27px;width:200px;" placeholder="Search" id="input_SearchNews">
+                <button class="btn btn-sm btn-success fa fa-search" id="btnSearchNews" ><span class="btn-label"> ค้นหา</span></button>
+              </div>
+            </div>
+            <hr>
+            <div class="warpper-table hidden-scroll-y table-responsive bg-white">
+                {{> tabular table=TabularTables.newsList selector=filterNewsList class="table"}}
+            </div>
+            <hr>
+            <div class="bg-white" style="padding: 5px;border-radius: 10px;text-align:center">
+              {{#with getStatusNews}}
+              <label>จำนวนข่าวทั้งหมด = {{total}}</label>
+              <label>, ประกาศ = {{total_announce}}</label>
+              <label>, ประชาสัมพันธ์ = {{total_advertise}}</label>
+              <label>, กิจกรรม = {{total_activity}}</label>
+              {{/with}}
+            </div>
+            <!--  ************************Modal************************-->
+            <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal" role="dialog" tabindex="-1" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button aria-label="Close" class="close cancel" data-dismiss="modal" type="button">
+                                <span aria-hidden="true">
+                            ×
+                        </span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                        Information
+                    </h4>
+                        </div>
+                        <div class="modal-body">
+                            {{#with ViewModalNews}}
+                            <!-- <img src="" id="imgtest" width="100%;height:100px;"> -->
+                            <div class="form-group row">
+                                <label class="col-xs-2 col-form-label">
+                                    Picture:
+                                </label>
+                                <div class="col-xs-10">
+                                    <!--  <div class="card text-center" style="width: 45%;">
+                                      <div class="card-header">
+                                        Photo
+                                      </div>
+                                      <div class="card-block">
+                                       <img src="/image/profile/1.png" style="width: 100%;"><br><br>
+                                        <a href="#" class="btn btn-primary" style=" width: 100%; ">Delete</a>
+                                      </div>
+                                    </div> -->
+                                    <div class='imgshow'>
+                                        <!-- <img src="" id="img" field="img" style="width:304px;height:228px;"> -->
+                                    </div>
+                                    <div class='imgupload'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="form-inline">
+                                    <label class="col-xs-12 col-form-label">
+                                        <select class="form-control form-control-sm " id="category" field="category" style="float: right;">
+                                            <option value="News">ข่าวสาร</option>
+                                            <option value="Article">บทความ</option>
+                                            <option value="Advertise">ประชาสัมพันธ์</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-xs-2 col-form-label">
+                                    Title:
+                                </label>
+                                <div class="col-xs-10">
+                                    <input class="form-control" type="text" id="input_ViewTitle" disabled="true" value="{{title}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-xs-2 col-form-label">
+                                    Content:
+                                </label>
+                                <div class="col-xs-10">
+                                    <div id="summernote">
+                                        {{{content}}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{/with}}
+                        </div>
+                        <div class="modal-footer">
+                            <button class="save_changes btn btn-success">Save</button>
+                            <button class="cancel btn btn-danger" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ************************End Modal************************-->
+        </div>
+    </div>
+    {{> LayoutFooter}}
+</template>

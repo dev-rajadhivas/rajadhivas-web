@@ -1,0 +1,56 @@
+<template name="Seecontent">
+    {{> LayoutHeader}} {{> LayoutNav}}
+
+    <div class="page-container">
+        <div class="page-title">
+            <p style="font-size: 22px;">ดูเนื้อหา</p>
+        </div>
+        <div class="content-container">
+            <div class="form-group row">
+                <label class="col-xs-2 col-form-label">
+                    อัพโหลดรูปภาพ :
+                </label>
+                <div class="col-xs-10">
+                    <div class='imgshow'>
+                        <!-- <img src="" id="img" field="img" style="width:304px;height:228px;"> -->
+                    </div>
+                    <div class='imgupload'>
+                        {{> upload_bootstrap id='pic' fileTypes='.jpg' multiple=true callbacks=myCallbacks }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="form-inline">
+                    <label class="col-xs-12 col-form-label">
+                        <select class="form-control form-control-sm " id="category" field="category" style="float: right;">
+                            <option value="News">ข่าวสาร</option>
+                            <option value="Article">บทความ</option>
+                            <option value="Advertise">ประชาสัมพันธ์</option>
+                            <option value="News">กิจกกรม</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xs-2 col-form-label">
+                    หัวข้อ :
+                </label>
+                <div class="col-xs-10">
+                    <input class="form-control value_upload" type="text" id="title" field="title">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xs-2 col-form-label">
+                    เนื้อหา :
+                </label>
+                <div class="col-xs-10">
+                    <div id="summernote"></div>
+                    <!--    <textarea type="text" class="form-control value_upload" rows="5" id="content" field="content"></textarea> -->
+                </div>
+            </div>
+            <button class="save_changes btn btn-success">บันทึก</button>
+            <button class="cancel btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+        </div>
+    </div>
+    {{> LayoutFooter}}
+</template>

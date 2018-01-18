@@ -1,0 +1,25 @@
+<template name="Hotnews">
+  {{> LayoutHeader}} {{> LayoutNav}}
+  <div class="page-container">
+    <div class="page-title"><p>ข่าวด่วน</p></div>
+    <div class="content-container">
+      <div class="row">
+        <div class="col-md-2">
+          <button class="btn btn-sm btn-success fa fa-plus" id="btnCreateHotNews"><span class="btn-label"> เพิ่มข่าวด่วน</span></button>
+          <button class="btn btn-sm btn-danger fa fa-plus" id="btnTest" hidden><span class="btn-label"> Delete</span></button>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-4 form-inline" style="text-align:right">
+          <input type="text" class="form-control" style="height:27px;width:200px;" placeholder="Search" id="inputHotNews" onkeypress="enterFunction(event, 'btnSearchHotNews')">
+          <button class="btn btn-sm btn-success fa fa-search" id="btnSearchHotNews" ><span class="btn-label"> ค้นหา</span></button>
+        </div>
+      </div>
+      <hr>
+      <div class="warpper-table hidden-scroll-y table-responsive bg-white table-hotnews">
+          {{> tabular table=TabularTables.newsList selector=filterHotnews class="table"}}
+      </div>
+      <hr>
+    </div>
+  </div>
+  {{> LayoutFooter}}
+</template>

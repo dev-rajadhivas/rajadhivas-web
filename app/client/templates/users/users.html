@@ -1,0 +1,33 @@
+<template name="Users">
+  {{> LayoutHeader}} {{> LayoutNav}}
+  <div class="page-container">
+    <div class="page-title"><p>ข้อมูลสมาชิก</p></div>
+    <div class="content-container">
+      <div class="row">
+        <div class="col-md-2">
+          <button class="btn btn-sm btn-success fa fa-plus" id="btnAddUser"><span class="btn-label"> เพิ่มสมาชิก</span></button>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-4 form-inline" style="text-align:right">
+          <input type="text" class="form-control" style="height:27px;width:200px;" placeholder="Search" id="inputSearchUsers" onkeypress="enterFunction(event, 'btnSearchUsers')">
+          <button class="btn btn-sm btn-success fa fa-search" id="btnSearchUsers" ><span class="btn-label"> ค้นหา</span></button>
+        </div>
+      </div>
+      <hr>
+      <div class="warpper-table hidden-scroll-y table-responsive bg-white table-users">
+          {{> tabular table=TabularTables.usersList selector=usersFilter class="table"}}
+      </div>
+      <hr>
+      <div class="bg-white" style="padding: 5px;border-radius: 10px;text-align:center">
+        {{#with getStatusUsers}}
+        <label>จำนวนผู้ใช้ทั้งหมด = {{total}}</label>
+        <label>, อาจารย์ = {{total_master}}</label>
+        <label>, นักเรียน = {{total_student}}</label>
+        <label>, ผู้ปกครอง = {{total_parent}}</label>
+        <label>, บุคคลทั่วไป = {{total_user}}</label>
+        {{/with}}
+      </div>
+    </div>
+  </div>
+  {{> LayoutFooter}}
+</template>

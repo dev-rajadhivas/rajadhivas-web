@@ -1,0 +1,204 @@
+<template name="Form">
+    {{> LayoutHeader}} {{> LayoutNav}}
+    <div class="page-container">
+        <div class="page-title">
+            <div class="page-header">
+                <span>
+                    Form
+                    <div class="breadcrumb lw-breadcrumb">
+                        <a class="breadcrumb-item lw-breadcrumb-item" href="#">
+                            <i class="fa fa-home">
+                            </i>
+                            Home
+                        </a>
+                        <a class="breadcrumb-item lw-breadcrumb-item" href="#">
+                            css
+                        </a>
+                        <span class="breadcrumb-item active">
+                            Form
+                        </span>
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="content-container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card card-block" style="background: rgba(0, 0, 0, 0.5);">
+                        <h3 class="card-title color-white">
+                            Page
+                        </h3>
+                        <div class="card card-default card-block">
+                            <ul class="nav nav-tabs nav-justified" id="tabsJustified">
+                                <li class="nav-item">
+                                    <a class="nav-link" data-target="#tab1" data-toggle="tab" href="">
+                                        List
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-target="#tab2" data-toggle="tab" href="">
+                                        Profile
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-target="#tab3" data-toggle="tab" href="">
+                                        Alert
+                                    </a>
+                                </li>
+                            </ul>
+                            <br/>
+                            <div class="tab-content" id="tabsJustifiedContent">
+                                <div class="tab-pane fade" id="tab1">
+                                    <div class="list-group">
+                                        <a class="list-group-item" href="">
+                                            <span class="pull-right tag tag-success">
+                                                51
+                                            </span>
+                                            Home Link
+                                        </a>
+                                        <a class="list-group-item" href="">
+                                            <span class="pull-right tag tag-success">
+                                                8
+                                            </span>
+                                            Link 2
+                                        </a>
+                                        <a class="list-group-item" href="">
+                                            <span class="pull-right tag tag-success">
+                                                23
+                                            </span>
+                                            Link 3
+                                        </a>
+                                        <a class="list-group-item text-muted" href="">
+                                            Link n..
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade active in" id="tab2">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h4>
+                                                Profile Section
+                                            </h4>
+                                            <p>
+                                                Imagine creating this simple user profile inside a tab card.
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img class="pull-right img-responsive img-rounded" src="//placehold.it/170"/>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <button class="btn btn-info btn-block" data-target="#myModal" data-toggle="modal" type="button">
+                                        Profiles
+                                    </button>
+                                    <div class="spacer5">
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab3">
+                                    <div class="list-group">
+                                        <div class="alert alert-success" role="alert">
+                                            <strong>
+                                                Well done!
+                                            </strong>
+                                            You successfully read this important alert message.
+                                        </div>
+                                        <div class="alert alert-info" role="alert">
+                                            <strong>
+                                                Heads up!
+                                            </strong>
+                                            This alert needs your attention, but it's not super important.
+                                        </div>
+                                        <div class="alert alert-warning" role="alert">
+                                            <strong>
+                                                Warning!
+                                            </strong>
+                                            Better check yourself, you're not looking too good.
+                                        </div>
+                                        <div class="alert alert-danger" role="alert">
+                                            <strong>
+                                                Oh snap!
+                                            </strong>
+                                            Change a few things up and try submitting again.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card card-block" style="background: rgba(0, 0, 0, 0.5);">
+                        <h3 class="card-title color-white">
+                            Special title treatment
+                        </h3>
+                        <p class="card-text">
+                            With supporting text below as a natural lead-in to additional content.
+                        </p>
+                        <a class="btn btn-primary" href="#">
+                            Go somewhere
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card card-block" style="background: rgba(0, 0, 0, 0.5);">
+                        <h3 class="card-title color-white">
+                            Special title treatment
+                        </h3>
+                        <p class="card-text">
+                            With supporting text below as a natural lead-in to additional content.
+                        </p>
+                        <a class="btn btn-primary" href="#">
+                            Go somewhere
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">
+                            ×
+                        </span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        Modal title
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label class="sr-only" for="exampleInputAmount">
+                                    Amount (in dollars)
+                                </label>
+                                <div class="input-group">
+                                    <input class="form-control" id="file" placeholder="Amount" type="file"/>
+                                    <div class="input-group-addon">
+                                        <i aria-hidden="true" class="fa fa-picture-o">
+                                        </i>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal" type="button">
+                        Close
+                    </button>
+                    <button class="btn btn-primary" type="button">
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> LayoutFooter}}
+    <script type="text/javascript">
+        $('#element').popover('toggle')
+    </script>
+</template>

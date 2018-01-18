@@ -1,0 +1,136 @@
+<template name="LayoutHeader">
+    <header id="navbar">
+        <div id="navbar-container">
+            <div class="navbar-header" style="background: #ffffff;">
+                <a class="navbar-brand" href="/" style="margin-right: 0;padding: 0px 5px 5px 5px;">
+                    <div class="brand-text">
+                        <img src="/image/raja.png" style="width: 180px;">
+                    </div>
+                </a>
+            </div>
+            <div class="navbar-content">
+                <ul class="nav navbar-top-links pull-left">
+                    <li id="lw-menu-btn">
+                        <a class="mainnav-toggle" href="#">
+                            <i class="fa fa-bars">
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <p class="system-title-1" style="font-size: 18px;">
+                                โรงเรียนวัดราชาธิวาส
+                            </p>
+
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-top-links pull-right">
+                   <!--  <li class="dropdown btn-group">
+                        <a class="dropdown-toggle dropdown-closeicon" data-toggle="dropdown" href="#">
+                            <i class="fa fa-bell-o">
+                            </i>
+                            <span class="badge badge-header badge-danger">
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">
+                                Action
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                message
+                            </a>
+                            <div class="dropdown-divider">
+                            </div>
+                            <a class="dropdown-item" href="#">
+                                Show All Notifications
+                            </a>
+                        </div>
+                    </li> -->
+                    <li class="btn-group" id="dropdown-user">
+                        <a class="dropdown-toggle dropdown-closeicon" data-toggle="dropdown" href="#">
+                            <span class="pull-right">
+                                <img alt="Profile Picture" class="img-circle img-user media-object" src="/image/profile/3.png">
+                                <i class="demo-pli-male ic-user">
+                                </i>
+                            </span>
+                            <div class="username hidden-text">
+                                {{currentUser.profile.firstname}} {{currentUser.profile.lastname}}
+                                <!-- ทดสอบ ระบบ -->
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" id="btnLogout">
+                                logout
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+</template>
+<template name="LayoutNav">
+    <nav id="mainnav-container">
+        <div id="mainnav">
+            <div id="mainnav-menu-wrap">
+                <div class="lw-box-menu">
+                    <div class="lw-box-menu-content">
+                        <ul class="list-group" id="lw-mainnav-menu">
+                            <li class="menu-collapse" id="news">
+                                <a href="/">
+                                    <i class="fa fa-3x fa-newspaper-o"></i>
+                                    <span class="menu-title">
+                                        <span>Feed</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="menu-collapse" id="user" {{permission}}>
+                                <a href="/users">
+                                    <i class="fa fa-3x fa-user"></i>
+                                    <span class="menu-title">
+                                        <span>สมาชิก</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="menu-collapse" id="infomation">
+                                <a href="/about">
+                                    <i class="fa fa-3x fa-info"></i>
+                                    <span class="menu-title">
+                                        <span>ประวัติโรงเรียน</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="menu-collapse" id="hotnews">
+                                <a href="/hotnews">
+                                    <i class="fa fa-3x fa-fire"></i>
+                                    <span class="menu-title">
+                                        <span>ข่าวด่วน</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- community -->
+                            <li class="menu-collapse" id="hotnews">
+                                <a href="#">
+                                    <i class="fa fa-3x fa-comments"></i>
+                                    <span class="menu-title">
+                                        <span>กระดานสนทนา</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</template>
+<template name="LayoutFooter">
+    <footer id="footer">
+        <div class="pull-right pad-rgt">
+        </div>
+        <span class="pad-lft">
+            Copyright © 2016 All rights reserved.
+        </span>
+    </footer>
+</template>

@@ -1,0 +1,17 @@
+/*****************************************************************************/
+/* Login: Style */
+/*****************************************************************************/
+
+.login{
+	background-attachment: fixed;
+	 height: 100vh;
+	background: #007CC8 !important;
+}
+.formLogin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -150px;
+    width: 300px;
+    height: 300px;
+}

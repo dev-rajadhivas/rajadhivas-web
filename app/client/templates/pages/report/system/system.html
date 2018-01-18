@@ -1,0 +1,75 @@
+<template name="System">
+    {{> LayoutHeader}} {{> LayoutNav}}
+    <div class="page-container">
+        <div class="page-title">
+            <div class="page-header">
+                <span>
+                    System
+                    <div class="breadcrumb lw-breadcrumb">
+                        <a class="breadcrumb-item lw-breadcrumb-item" href="#">
+                            <i class="fa fa-home">
+                            </i>
+                            Home
+                        </a>
+                        <a class="breadcrumb-item lw-breadcrumb-item" href="#">
+                            Report
+                        </a>
+                        <span class="breadcrumb-item active">
+                            System
+                        </span>
+                    </div>
+                </span>
+            </div>
+        </div>
+        <div class="content-container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-6">
+                    <div class="lw-box-chart bg-chart-primary">
+                        <div class="lw-box-chart-header box-chart-border">
+                            <h3 class="lw-box-chart-title">
+                                Network Availability
+                            </h3>
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-6">
+                                    <div id="piechart" class="lw-pie-size">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-sm-6">
+                                    <div class="lw-bar-posi">
+                                        <div id="bar_all">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-sm-6">
+                    <div class="lw-box-chart bg-chart-primary">
+                        <div class="lw-box-chart-header box-chart-border">
+                            <h3 class="lw-box-chart-title">
+                                Device Availability
+                            </h3>
+                            <div id="pieDevice" class="lw-pie-size">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <div class="lw-box-chart bg-chart-primary">
+                        <div class="lw-box-chart-header box-chart-border">
+                            <h3 class="lw-box-chart-title">
+                                Service Availability
+                            </h3>
+                            <div id="pieService" class="lw-pie-size">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> LayoutFooter}}
+</template>

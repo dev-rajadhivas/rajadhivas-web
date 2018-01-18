@@ -1,0 +1,72 @@
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, input, button, select, textarea, body, html, div, span, p {
+    font-family: "kanit";
+}
+
+hr {
+  margin-top: 0.5em !important;
+  margin-bottom: 0.5em !important;
+}
+
+/*****************************************************************************/
+select {
+  padding: 0 5px !important;
+}
+
+/*max-width mongo*/
+
+#Mongol.Mongol_expand {
+    width: 100% !important;
+    max-width: 500px !important;
+}
+
+
+/*theme-setup*/
+
+body {
+    /* background-image: url(/image/bg/blue.jpg); */
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.img-upload {
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    border: solid 1px #ddd;
+    border-bottom: 0px;
+    background-color: #ddd;
+}
+.img-upload img.imagepreview {
+    height: 200px;
+    width: auto;
+    padding: 5px;
+}
+
+
+
+.value_upload{
+
+	border: 1px solid black ;
+     margin: auto;
+    padding: 10px;
+}
+
+.modal-content{
+
+	width: 120%;
+	height: 120%;
+}
+
+.value_garage{
+
+	width: 55%;
+	height: 45%;
+}
+
+/*body, a, input, .help-block {
+    color: #fff;
+
+}
+*/

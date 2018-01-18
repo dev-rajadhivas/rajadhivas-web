@@ -1,0 +1,46 @@
+@media (max-width: 767px) {
+    .navbar-header {
+        display: none !important;
+    }
+    .mainnav-toggle {
+        width: 44px;
+        text-align: center;
+    }
+    .navbar-content.nav-content-collapse {
+        margin-left: 0px !important;
+    }
+    .lw-info-box {
+        text-align: center;
+    }
+    .lw-info-box .icon {
+        display: none;
+    }
+    .lw-info-box p {
+        font-size: 12px !important;
+    }
+    .hidden-text {
+        display: none !important;
+    }
+    .lw-breadcrumb {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .tool-input {
+        width: 200px !important;
+        display: inline-block !important;
+    }
+    #dropdown-user>.dropdown-toggle img {
+        -webkit-transform: translateY(4px);
+        -ms-transform: translateY(4px);
+        transform: translateY(4px)
+    }
+    .navbar-content {
+        margin-left: 220px;
+    }
+    #navbar {
+        background-color: transparent;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+}

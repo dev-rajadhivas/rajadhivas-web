@@ -1,0 +1,88 @@
+<template name="Addcontent">
+    {{> LayoutHeader}} {{> LayoutNav}}
+    <div class="page-container">
+        <div class="page-title">
+            <p style="font-size: 22px;">เพิ่มข่าวสาร</p>
+        </div>
+        <div class="content-container">
+            <div class="form-group row" style="margin:0px">
+                <label class="col-xs-2 col-form-label"></label>
+                <div class="col-xs-10">
+                    <span style="color:red">* แนะนำไฟล์ .jpg .png ขนาดไม่เกิน 1MB</span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xs-2 col-form-label">
+                    อัพโหลดรูปภาพ :
+                </label>
+                <div class="col-xs-10">
+                    <div class='imgshow'>
+                    </div>
+                    <div class='imgupload'>
+                        <form class="" method="post">
+                            <div class="img-upload" style="text-align: center;width: 100%;height: 200px;border: solid 1px #ddd;border-bottom: 0px;background-color: #ddd;">
+                                <img src="" class="imagepreview" id='imagepreview_insert'>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" name="page" value="/news/" hidden>
+                                <input type="text" id='news_id' name="id" value="" hidden>
+                                <input type="text" id='type' name="type" value="jpg" hidden>
+                                <input type="text" name='checkfunction' value="add_news" hidden>
+                                <input type="text" class="form-control form-control-sm textShowFilename" readonly="" style="display:none;">
+                                <label class="input-group-btn">
+                                    <span class="btn btn-primary btnbrowse" style="width:100%;" id='btnbrowse'>Browse… <input class='jqUploadclass' type="file" style="display: none;" accept="image/*" multiple="" OnChange="showPreview(this)"></span>
+                                    <button id='startuploadfile_insert' hidden></button>
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="form-inline">
+                    <label class="col-xs-12 col-form-label">
+                        <select class="form-control form-control-sm " id="category_id" field="category_id" style="float: right;">
+                            <option value="1">ประกาศ</option>
+                            <!-- <option value="บทความ">บทความ</option> -->
+                            <option value="2">ประชาสัมพันธ์</option>
+                            <option value="3">กิจกรรม</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xs-2 col-form-label">
+                    หัวข้อ :
+                </label>
+                <div class="col-xs-10">
+                    <input class="form-control value_upload" type="text" id="input_title" field="title">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xs-2 col-form-label">
+                    เนื้อหา :
+                </label>
+                <div class="col-xs-10">
+                    <div id="summernote"></div>
+                    <!--    <textarea type="text" class="form-control value_upload" rows="5" id="content" field="content"></textarea> -->
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xs-2 col-form-label">
+                    วันหมดอายุ :
+                </label>
+                <div class="col-xs-10">
+                    <input class="form-control value_upload" type="text" id="expiry_date" field="expiry_date">
+                </div>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="{{progress true}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}">
+                {{progress}}
+              </div>
+            </div>
+            <button class="save_changes btn btn-success" id="save">บันทึก</button>
+            <button class="cancel btn btn-danger" data-dismiss="modal" id="cancel">ยกเลิก</button>
+        </div>
+    </div>
+    {{> LayoutFooter}}
+</template>

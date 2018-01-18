@@ -1,0 +1,105 @@
+<template name="Table">
+    {{> LayoutHeader}} {{> LayoutNav}}
+    <div class="page-container">
+        <div class="page-title">
+            <div class="page-header">
+                <span>
+                    Add Stock
+                </span>
+            </div>
+        </div>
+        <div class="content-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-block lw-card-transparent">
+                        <button class="btn btn-success" data-target="#myModal" data-toggle="modal" type="button">
+                            <i aria-hidden="true" class="fa fa-shopping-cart">
+                            </i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="lw-table-border">
+                        <div class="lw-table-border-header width-border lw-table-head">
+                            <h3 class="lw-table-border-title">
+                                Stock
+                            </h3>
+                        </div>
+                        <div class="warpper-table lw-table-border-body hidden-scroll-y table-responsive">
+                            {{> reactiveTable collection=Garang settings=tableSettings}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="myModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">
+                            ×
+                        </span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        Modal title
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label class="col-xs-2 col-form-label">
+                            ชื่อสิ้นค้า
+                        </label>
+                        <div class="col-xs-10">
+                            <input class="form-control" placeholder="ชื่อสิ้นค้า" type="text" id ="name_item"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-xs-2 col-form-label">
+                            ประเภท
+                        </label>
+                        <div class="col-xs-10">
+                            <input class="form-control" placeholder="ประเภท" type="text" id="group_item"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-xs-2 col-form-label">
+                            ราคา
+                        </label>
+                        <div class="col-xs-10">
+                            <input class="form-control" placeholder="ราคา" type="text" id="price_item"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-xs-2 col-form-label">
+                            ชื่อร้าน
+                        </label>
+                        <div class="col-xs-10">
+                            <input class="form-control" placeholder="ชื่อร้าน" type="text" id="shop_name"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-xs-2 col-form-label">
+                            วันที่
+                        </label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="date" id="date"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal" type="button">
+                        Close
+                    </button>
+                    <button class="save_changes btn btn-success" type="button">
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> LayoutFooter}}
+</template>

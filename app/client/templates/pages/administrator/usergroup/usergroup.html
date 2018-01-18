@@ -1,0 +1,44 @@
+<template name="Usergroup">
+    {{> LayoutHeader}} {{> LayoutNav}}
+    <div class="usergroup">
+        <div class="page-container">
+            <div class="page-title">
+                <div class="page-header">
+                    <span>
+                    Groups Management
+                    <div class="breadcrumb lw-breadcrumb">
+                        <a class="breadcrumb-item lw-breadcrumb-item" href="#">
+                            <i class="fa fa-home">
+                            </i>
+                            Home
+                        </a>
+                        <a class="breadcrumb-item lw-breadcrumb-item" href="#">
+                            Administrator
+                        </a>
+                        <span class="breadcrumb-item active">
+                            User Groups
+                        </span>
+                </div>
+                </span>
+            </div>
+        </div>
+        <div class="content-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="lw-table-border">
+                        <div class="lw-table-border-header">
+                            <h3 class="lw-table-border-title">
+                                Table
+                            </h3>
+                        </div>
+                        <div class="warpper-table lw-table-border-body hidden-scroll-y table-responsive">
+                        {{>Linxgroup}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> LayoutFooter}}
+    </div>
+</template>
