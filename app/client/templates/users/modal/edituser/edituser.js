@@ -3,7 +3,8 @@
 /*****************************************************************************/
 Template.Edituser.events({
   'click #btnEditUser': function() {
-    var fieldEmpty = inputCHKEmpty('valueEdit');
+    // var fieldEmpty = inputCHKEmpty('valueEdit');
+    var fieldEmpty = inputCHKEmptySkipZero('valueEdit');
     if (!fieldEmpty) return false
     var _id = Session.get('user_id');
     var data = inputToArray('valueEdit');
@@ -22,7 +23,11 @@ Template.Edituser.events({
 /*****************************************************************************/
 /* Edituser: Helpers */
 /*****************************************************************************/
-Template.Edituser.helpers({});
+Template.Edituser.helpers({
+  genRoom:function(){
+    return Room.find()
+  }
+});
 
 /*****************************************************************************/
 /* Edituser: Lifecycle Hooks */

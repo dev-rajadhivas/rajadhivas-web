@@ -115,3 +115,16 @@ Router.route('/about', {
   where: 'client',
   controller: 'HomeController'
 });
+
+Router.route('/config', {
+  name: 'config',
+  where: 'client',
+  controller: 'HomeController'
+});
+
+
+Router.route('/webboard', {
+  name: 'webboard',
+  where: 'client',
+  controller: 'HomeController'
+});

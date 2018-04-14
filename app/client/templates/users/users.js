@@ -95,6 +95,7 @@ Template.Users.helpers({
 /*****************************************************************************/
 Template.Users.onCreated(function() {
   this.subscribe('StatusUsers');
+  this.subscribe('Rooms');
   this.autorun(function() {
     if (Meteor.user() && Meteor.user().profile && Meteor.user().profile.level !== "ผู้ดูแลระบบ") {
       swal("แจ้งเตือนจากระบบ", "คุณไม่มีสิทธิ์การเข้าถึงข้อมูล", "error");

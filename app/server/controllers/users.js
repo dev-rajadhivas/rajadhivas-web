@@ -102,5 +102,36 @@ Meteor.methods({
       status: true,
       msg: 'เปลี่ยนรหัสผ่านผู้ใช้เสร็จสมบูรณ์'
     }
+  },
+  'forgetPasswordUser': function(_id) {
+    var result = {
+      status: false
+    };
+    var userDB = Meteor.users.findOne({
+      _id: _id
+    });
+    if(userDB){
+      if(userDB.profile.email){
+        var new_password = Random.id();
+        Accounts.setPassword(_id, new_password);
+        var html = "ชื่อผู้ใช้ : <b>" + userDB.username + "</b><br>";
+        html += "รหัสผ่าน : <b>" + new_password + "</b><br>";
+        html += "สามารถนำรหัสไปใช้ที่ <a href='http://rajadhivas.ddns.net:3000/login'>RAJADHIVAS NEWS</a>";
+        Email.send({
+          to: userDB.profile.email,
+          from: 'anonymous@mail.com',
+          subject: 'Reset Password',
+          html: html
+
+        });
+        result.status = true;
+        result.msg = 'รหัสใหม่ถูกส่งไปที่ ' + userDB.profile.email + ' เรียบร้อยแล้ว กรุณาตรวจที่สอบอีเมลอีกครั้งเพื่อรับรหัสผ่านใหม่';
+      }else{
+        result.msg = 'ไม่พบอีเมล';
+      }
+    }else{
+      result.msg = 'ไม่พบผู้ใช้นี้';
+    }
+    return result;
   }
 })

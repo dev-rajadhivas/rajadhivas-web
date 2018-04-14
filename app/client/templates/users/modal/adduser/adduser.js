@@ -21,7 +21,11 @@ Template.Adduser.events({
 /*****************************************************************************/
 /* Adduser: Helpers */
 /*****************************************************************************/
-Template.Adduser.helpers({});
+Template.Adduser.helpers({
+    genRoom:function(){
+      return Room.find()
+    }
+});
 
 /*****************************************************************************/
 /* Adduser: Lifecycle Hooks */

@@ -26,9 +26,9 @@ Router.route('/queryNews', {
         // if (check) {
         var _post = this.request.body;
         var dataNews = News.find().fetch();
-        if (dataNews) {
-            var response_ = { status: true, data: dataNews };
-        }
+        // response_ = { status: true, data: dataNews };
+        response_.status = true;
+        response.data = dataNews.length > 0 ? dataNews : [];
         // }
         this.response.writeHead(200, {
             'Content-Type': 'application/json; charset=utf-8'
@@ -174,6 +174,7 @@ Router.route('/readNews', {
         var response_ = "";
         var _post = this.request.body;
         if (_post && _post._id) {
+            console.log(_post)
             response_ = Meteor.call("editUserData", _post, _post._id);
         }
         this.response.writeHead(200, {
@@ -195,6 +196,7 @@ Router.route('/newsFilter', {
         var _post = this.request.body;
         if (_post && _post._id) {
             var user = Meteor.users.findOne({ _id: _post._id });
+            // var profile_news_id = user.profile.news_id ? user.profile.news_id : [];
             var data = News.find({ hotnews: false, news_id: { $nin: user.profile.news_id } }).fetch();
             response_ = {
                 "status": true,
@@ -219,6 +221,7 @@ Router.route('/favorites', {
         var response_ = "";
         var _post = this.request.body;
         if (_post && _post._id) {
+            console.log(_post);
             response_ = Meteor.call("editUserData", _post, _post._id);
         }
         this.response.writeHead(200, {
@@ -297,6 +300,125 @@ Router.route('/newsSearch', {
                 "messages": "ไม่พบข่าวที่ค้นหา"
             };
         }
+        this.response.writeHead(200, {
+            'Content-Type': 'application/json; charset=utf-8'
+        });
+        this.response.end(JSON.stringify(response_));
+    }
+});
+
+// #############################################################################
+// เปลี่ยนรหัสผ่าน
+Router.route('/changePassword', {
+    where: 'server',
+    action: function() {
+        this.response.setHeader("Content-Type", "application/json");
+        this.response.setHeader("Access-Control-Allow-Origin", "*");
+        this.response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        var response_ = new Object();
+        var _post = this.request.body;
+        if (_post && _post._id) {
+            var update = Meteor.call("changePasswordUser", _post, _post._id);
+            if (update.status === true) {
+                response_ = {
+                    "status": update.status,
+                    "messages": update.msg
+                };
+            } else {
+                response_ = {
+                    "status": false,
+                    "messages": "เกิดข้อผิดพลาด"
+                };
+            }
+        }
+        this.response.writeHead(200, {
+            'Content-Type': 'application/json; charset=utf-8'
+        });
+        this.response.end(JSON.stringify(response_));
+    }
+});
+
+// #############################################################################
+// เปลี่ยนรหัสผ่าน
+Router.route('/forgetPassword', {
+    where: 'server',
+    action: function() {
+        this.response.setHeader("Content-Type", "application/json");
+        this.response.setHeader("Access-Control-Allow-Origin", "*");
+        this.response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        var response_ = new Object();
+        var _post = this.request.body;
+        if (_post) {
+            var userDB = Meteor.users.findOne({
+                "profile.email": _post.email
+            });
+            if (userDB) {
+                var reset = Meteor.call("forgetPasswordUser", userDB._id);
+                if (reset.status === true) {
+                    response_ = {
+                        "status": reset.status,
+                        "messages": reset.msg
+                    };
+                } else {
+                    response_ = {
+                        "status": false,
+                        "messages": reset.msg
+                    };
+                }
+            } else {
+                response_ = {
+                    "status": false,
+                    "messages": "ไม่พบ email กรุณาตรวจสอบใหม่อีกครั้ง"
+                };
+            }
+        }
+        this.response.writeHead(200, {
+            'Content-Type': 'application/json; charset=utf-8'
+        });
+        this.response.end(JSON.stringify(response_));
+    }
+});
+
+// #############################################################################
+// เปลี่ยนรหัสผ่าน
+Router.route('/insertBoard', {
+    where: 'server',
+    action: function() {
+        this.response.setHeader("Content-Type", "application/json");
+        this.response.setHeader("Access-Control-Allow-Origin", "*");
+        this.response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        var response_ = new Object();
+        var _post = this.request.body;
+        if (_post.content_title) {
+            _post.create_date = new Date();
+            var insert = Boardcontent.insert(_post);
+            if (insert) {
+                response_.status = true;
+                response_.messages = "สร้างกระดานสนทนาเรียบร้อย"
+            } else {
+                response_.status = false;
+                response_.messages = "เกิดข้อผิดพลาด ลองใหม่อีกครั้ง"
+            }
+        }
+        this.response.writeHead(200, {
+            'Content-Type': 'application/json; charset=utf-8'
+        });
+        this.response.end(JSON.stringify(response_));
+    }
+});
+
+// #############################################################################
+// เปลี่ยนรหัสผ่าน
+Router.route('/BoardList', {
+    where: 'server',
+    action: function() {
+        this.response.setHeader("Content-Type", "application/json");
+        this.response.setHeader("Access-Control-Allow-Origin", "*");
+        this.response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        var response_ = new Object();
+        var data = Boardcontent.find().fetch();
+        response_.status = true;
+        response_.data = data.length > 0 ? data : [];
         this.response.writeHead(200, {
             'Content-Type': 'application/json; charset=utf-8'
         });

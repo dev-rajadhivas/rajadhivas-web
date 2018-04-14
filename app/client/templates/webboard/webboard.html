@@ -1,0 +1,24 @@
+<template name="Webboard">
+  {{> LayoutHeader}} {{> LayoutNav}}
+  <div class="page-container">
+      <div class="page-title"><p>กระดานสนทนา</p></div>
+      <div class="content-container">
+          <div class="row">
+            <div class="col-md-2">
+              <button class="btn btn-sm btn-success fa fa-plus" id="btnAddContent"><span class="btn-label"> เพิ่ม</span></button>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-4 form-inline" style="text-align:right">
+              <input type="text" class="form-control" style="height:27px;width:200px;" placeholder="Search" id="input_SearchContent">
+              <button class="btn btn-sm btn-success fa fa-search" id="btnSearchContent" ><span class="btn-label"> ค้นหา</span></button>
+            </div>
+          </div>
+          <hr>
+          <div class="warpper-table hidden-scroll-y table-responsive bg-white">
+              {{> tabular table=TabularTables.boardcontent selector=filterBoardcontent class="table"}}
+          </div>
+          <hr>
+      </div>
+  </div>
+  {{> LayoutFooter}}
+</template>

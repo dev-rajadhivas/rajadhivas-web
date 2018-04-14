@@ -4,6 +4,9 @@ Meteor.publish('News', function() {
 Meteor.publish('Counters', function() {
   return Counters.find();
 });
+Meteor.publish('Rooms', function() {
+  return Room.find();
+});
 Meteor.publish('StatusNews', function() {
   var pipeline = [{
     $match: {
@@ -61,4 +64,7 @@ Meteor.publish('StatusUsers', function() {
 });
 Meteor.publish('Unity', function(query) {
   return Unity.find(query.data, query.option);
+});
+Meteor.publish('Boardcontent', function() {
+  return Boardcontent.find();
 });

@@ -678,9 +678,9 @@ thaiDate = function(date, option) {
   if (option) {
     monthName = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
   }
-  var day = thaiNumber(date.date());
+  var day = (date.date());
   var month = monthName[date.month()];
-  var year = option ? thaiNumber(date.year() + 543) : thaiNumber(((date.year() + 543).toString().slice(-2)));
+  var year = option ? (date.year() + 543) : (((date.year() + 543).toString().slice(-2)));
   return day + ' ' + month + ' ' + year;
 }
 
