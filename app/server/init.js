@@ -1,5 +1,5 @@
 Meteor.startup(function() {
-  process.env.MAIL_URL='smtps://thaiwhitehat%40gmail.com:thaiwhitehat%402017@smtp.gmail.com:465'
+  process.env.MAIL_URL='smtps://dev.rajadhivas%40gmail.com:dev%40rajadh1vas@smtp.gmail.com:465'
   // Push.Configure({
   //   "gcm": {
   //     "apiKey": "AIzaSyAWSw2mKUabyCizC0pOTT3ZT-QdUFiU02k",

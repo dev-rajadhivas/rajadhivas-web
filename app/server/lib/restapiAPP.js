@@ -28,7 +28,7 @@ Router.route('/queryNews', {
         var dataNews = News.find().fetch();
         // response_ = { status: true, data: dataNews };
         response_.status = true;
-        response.data = dataNews.length > 0 ? dataNews : [];
+        response_.data = dataNews.length > 0 ? dataNews : [];
         // }
         this.response.writeHead(200, {
             'Content-Type': 'application/json; charset=utf-8'
@@ -103,7 +103,7 @@ Router.route('/signin', {
                             "token": _post.devicetoken
                         }
                     }
-                    HTTP.call('POST', 'http://35.200.226.242:8100/subscribe', noti_send, function(error, result) {
+                    HTTP.call('POST', 'http://rajadhivas.ddns.net:8100/subscribe', noti_send, function(error, result) {
                         if (!error) console.log('send notification error:', error);
                     });
                     //data return app
@@ -145,8 +145,9 @@ Router.route('/register', {
         this.response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         var response_ = "";
         var _post = this.request.body;
-        var check = validatePost(_post);
-        if (check) {
+        // var check = validatePost(_post);
+        // console.log(check, _post);
+        if (_post.email) {
             _post.news_id = [];
             _post.favorite_news_id = [];
             var response_ = Meteor.call("createUserData", _post);
@@ -196,8 +197,9 @@ Router.route('/newsFilter', {
         var _post = this.request.body;
         if (_post && _post._id) {
             var user = Meteor.users.findOne({ _id: _post._id });
-            // var profile_news_id = user.profile.news_id ? user.profile.news_id : [];
-            var data = News.find({ hotnews: false, news_id: { $nin: user.profile.news_id } }).fetch();
+            var profile_news_id = user.profile.news_id ? user.profile.news_id : [];
+            // var data = News.find({ hotnews: false, news_id: { $nin: user.profile.news_id } }).fetch();
+            var data = News.find({ hotnews: false, news_id: { $nin: profile_news_id } }).fetch();
             response_ = {
                 "status": true,
                 "data": data
@@ -353,7 +355,8 @@ Router.route('/forgetPassword', {
                 "profile.email": _post.email
             });
             if (userDB) {
-                var reset = Meteor.call("forgetPasswordUser", userDB._id);
+                // var reset = Meteor.call("forgetPasswordUser", userDB._id);
+                var reset = Meteor.call("forgetPasswordUser", _post.email);
                 if (reset.status === true) {
                     response_ = {
                         "status": reset.status,
@@ -380,7 +383,7 @@ Router.route('/forgetPassword', {
 });
 
 // #############################################################################
-// เปลี่ยนรหัสผ่าน
+// สร้างบอร์ด
 Router.route('/insertBoard', {
     where: 'server',
     action: function() {
@@ -390,14 +393,33 @@ Router.route('/insertBoard', {
         var response_ = new Object();
         var _post = this.request.body;
         if (_post.content_title) {
-            _post.create_date = new Date();
-            var insert = Boardcontent.insert(_post);
-            if (insert) {
-                response_.status = true;
-                response_.messages = "สร้างกระดานสนทนาเรียบร้อย"
-            } else {
-                response_.status = false;
-                response_.messages = "เกิดข้อผิดพลาด ลองใหม่อีกครั้ง"
+            // _post.create_date = new Date();
+            console.log(_post)
+            var data = new Object();
+            switch (_post.view_type) {
+                case "เฉพาะชั้นปี":
+                    data.content_title = _post.content_title;
+                    data.content_type = _post.content_type;
+                    data.room_id = _post.room_id;
+                    data.content_detail = _post.content_detail;
+                    data.active_permission = true;
+                    data.create_by = _post.create_by;
+                    data.create_by_name = _post.create_by_name;
+                    break;
+                case "ทั่วไป":
+                    data.content_title = _post.content_title;
+                    data.content_type = _post.content_type;
+                    data.room_id = null;
+                    data.content_detail = _post.content_detail;
+                    data.active_permission = false;
+                    data.create_by = _post.create_by;
+                    data.create_by_name = _post.create_by_name;
+                    break;
+            }
+            var create_board = Meteor.call("create_board_content", data);
+            if (create_board) {
+                response_.status = create_board.status;
+                response_.messages = create_board.msg;
             }
         }
         this.response.writeHead(200, {
@@ -408,7 +430,7 @@ Router.route('/insertBoard', {
 });
 
 // #############################################################################
-// เปลี่ยนรหัสผ่าน
+// รายการบอร์ด
 Router.route('/BoardList', {
     where: 'server',
     action: function() {
@@ -416,9 +438,122 @@ Router.route('/BoardList', {
         this.response.setHeader("Access-Control-Allow-Origin", "*");
         this.response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         var response_ = new Object();
-        var data = Boardcontent.find().fetch();
-        response_.status = true;
-        response_.data = data.length > 0 ? data : [];
+        var _post = this.request.body;
+        if (_post.room_id || _post.room_id === null) {
+        	console.log(_post.room_id)
+            // var data = Boardcontent.find({ room_id: _post.room_id, active_permission: _post.active_permission }).fetch();
+            var data = Boardcontent.find({
+                $or: [{
+                    active_permission: false
+                }, {
+                    active_permission: true,
+                    room_id: _post.room_id ? parseInt(_post.room_id) : 0
+                }]
+            }).fetch();
+            response_.status = true;
+            response_.data = data.length > 0 ? data : [];
+        }
+        this.response.writeHead(200, {
+            'Content-Type': 'application/json; charset=utf-8'
+        });
+        this.response.end(JSON.stringify(response_));
+    }
+});
+
+// #############################################################################
+// นับจำนวนการอ่านบอร์ด
+Router.route('/Boardread', {
+    where: 'server',
+    action: function() {
+        this.response.setHeader("Content-Type", "application/json");
+        this.response.setHeader("Access-Control-Allow-Origin", "*");
+        this.response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        var response_ = new Object();
+        var _post = this.request.body;
+        if (_post._id) {
+            var read = Meteor.call("update_read_board_content", _post._id);
+            if (read.status === true) {
+                response_.status = true;
+            } else {
+                response_.status = false;
+                response_.messages = read.msg;
+            }
+        }
+        this.response.writeHead(200, {
+            'Content-Type': 'application/json; charset=utf-8'
+        });
+        this.response.end(JSON.stringify(response_));
+    }
+});
+
+// #############################################################################
+// รายการบอร์ด
+Router.route('/BoardOnelist', {
+    where: 'server',
+    action: function() {
+        this.response.setHeader("Content-Type", "application/json");
+        this.response.setHeader("Access-Control-Allow-Origin", "*");
+        this.response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        var response_ = new Object();
+        var _post = this.request.body;
+        if (_post.content_id) {
+            var data = Boardcontent.findOne({ content_id: parseInt(_post.content_id) });
+            if (data) {
+                response_.status = true;
+                response_.data = data;
+            } else {
+                response_.status = false;
+                response_.messages = "ไม่สามารถแสดงข้อมูลบอร์ดได้ กรุณาตรวจสอบใหม่อีกครั้ง";
+            }
+        }
+        this.response.writeHead(200, {
+            'Content-Type': 'application/json; charset=utf-8'
+        });
+        this.response.end(JSON.stringify(response_));
+    }
+});
+
+// #############################################################################
+// คอมเม้น
+Router.route('/BoardComment', {
+    where: 'server',
+    action: function() {
+        this.response.setHeader("Content-Type", "application/json");
+        this.response.setHeader("Access-Control-Allow-Origin", "*");
+        this.response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        var response_ = new Object();
+        var _post = this.request.body;
+        if (_post.content_id) {
+            var data = Subboardcontent.find({ content_id: _post.content_id }).fetch();
+            response_.status = true;
+            response_.data = data.length > 0 ? data : [];
+        }
+        this.response.writeHead(200, {
+            'Content-Type': 'application/json; charset=utf-8'
+        });
+        this.response.end(JSON.stringify(response_));
+    }
+});
+
+// #############################################################################
+// เพิ่มคอมเม้น
+Router.route('/BoardcreateComment', {
+    where: 'server',
+    action: function() {
+        this.response.setHeader("Content-Type", "application/json");
+        this.response.setHeader("Access-Control-Allow-Origin", "*");
+        this.response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        var response_ = new Object();
+        var _post = this.request.body;
+        if (_post.content_id) {
+            var read = Meteor.call("create_board_sub_content", _post);
+            if (read.status === true) {
+                response_.status = true;
+            } else {
+                response_.status = false;
+                response_.messages = read.msg;
+            }
+        }
         this.response.writeHead(200, {
             'Content-Type': 'application/json; charset=utf-8'
         });

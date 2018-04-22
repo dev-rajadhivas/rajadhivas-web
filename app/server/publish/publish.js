@@ -1,70 +1,79 @@
 Meteor.publish('News', function() {
-  return News.find();
+    return News.find();
 });
 Meteor.publish('Counters', function() {
-  return Counters.find();
+    return Counters.find();
 });
 Meteor.publish('Rooms', function() {
-  return Room.find();
+    return Room.find();
 });
 Meteor.publish('StatusNews', function() {
-  var pipeline = [{
-    $match: {
-      hotnews: false,
-      $or: [{
-        expiry_date: {
-          $exists: false
+    var pipeline = [{
+        $match: {
+            hotnews: false,
+            $or: [{
+                expiry_date: {
+                    $exists: false
+                }
+            }, {
+                expiry_date: {
+                    $gt: new Date()
+                }
+            }]
         }
-      }, {
-        expiry_date: {
-          $gt: new Date()
+    }, {
+        $group: {
+            _id: "$category_id",
+            count: {
+                $sum: 1
+            }
         }
-      }]
-    }
-  }, {
-    $group: {
-      _id: "$category_id",
-      count: {
-        $sum: 1
-      }
-    }
-  }, {
-    $sort: {
-      _id: 1
-    }
-  }];
-  var clientCollection = {
-    clientCollection: 'statusnews'
-  };
-  ReactiveAggregate(this, News, pipeline, clientCollection);
+    }, {
+        $sort: {
+            _id: 1
+        }
+    }];
+    var clientCollection = {
+        clientCollection: 'statusnews'
+    };
+    ReactiveAggregate(this, News, pipeline, clientCollection);
 });
 Meteor.publish('StatusUsers', function() {
-  var pipeline = [{
-    $match: {
-      "profile.level": {
-        $ne: "ผู้ดูแลระบบ"
-      }
-    }
-  }, {
-    $group: {
-      _id: "$profile.userrole",
-      count: {
-        $sum: 1
-      }
-    }
-  }, {
-    $sort: {
-      _id: 1
-    }
-  }];
-  var clientCollection = {
-    clientCollection: 'statususers'
-  };
-  ReactiveAggregate(this, Meteor.users, pipeline, clientCollection);
+    var pipeline = [{
+        $match: {
+            "profile.level": {
+                $ne: "ผู้ดูแลระบบ"
+            }
+        }
+    }, {
+        $group: {
+            _id: "$profile.userrole",
+            count: {
+                $sum: 1
+            }
+        }
+    }, {
+        $sort: {
+            _id: 1
+        }
+    }];
+    var clientCollection = {
+        clientCollection: 'statususers'
+    };
+    ReactiveAggregate(this, Meteor.users, pipeline, clientCollection);
 });
 Meteor.publish('Unity', function(query) {
-  return Unity.find(query.data, query.option);
+    return Unity.find(query.data, query.option);
 });
 Meteor.publish('Boardcontent', function() {
-  return Boardcontent.find();
+    return Boardcontent.find();
+});
+Meteor.publish('ContentData', function(content_id) {
+    var filter = {
+        content_id: content_id
+    }
+    return [
+        Boardcontent.find(filter),
+        Subboardcontent.find(filter)
+    ]
 });

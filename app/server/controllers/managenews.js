@@ -21,7 +21,7 @@ Meteor.methods({
         }
       }
       HTTP.call('POST', 'http://localhost:8100/send', noti_send, function(error, result) {
-        if (!error) console.log('send notification error:', error);
+        if (error) console.log('send notification error:', error);
       });
     }
     return {

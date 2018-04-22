@@ -5,7 +5,7 @@
                 <div class="modal-header page-title">
                     <h4 class="modal-title">แก้ไขสมาชิก</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="{{getHightWindows}}">
                   <form>
                     <input type="text" class="form-control valueEdit" field="user_id" form-check-zero=true field-type="int" hidden>
                     <div class="form-group">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="form-group">
                       <label>ห้อง:</label>
-                      <select class="form-control valueEdit" field="room" form-check-zero=true >
+                      <select class="form-control valueEdit" field="room_id" form-check-zero=true >
                         <option value="0" selected>-</option>
                         {{#each genRoom}}
                           <option value={{room_id}}>{{room_name}}</option>
@@ -53,15 +53,16 @@
                     </div>
                     <!-- <div class="form-group"> -->
                       <!-- <label>latitude:</label> -->
-                      <input type="hidden" class="form-control valueEdit" field="latitude" field-type="float">
+                      <!-- <input type="hidden" class="form-control valueEdit" field="latitude" field-type="float"> -->
                     <!-- </div> -->
                     <!-- <div class="form-group"> -->
                       <!-- <label>longitude:</label> -->
-                      <input type="hidden" class="form-control valueEdit" field="longitude" field-type="float">
+                      <!-- <input type="hidden" class="form-control valueEdit" field="longitude" field-type="float"> -->
                     <!-- </div> -->
                     <!-- <div class="form-group"> -->
                       <!-- <label>Device token:</label> -->
-                      <input type="hidden" class="form-control valueEdit" field="devicetoken">
+                      <!-- <input type="hidden" class="form-control valueEdit" field="devicetoken"> -->
+
                     <!-- </div> -->
                     <div class="form-group">
                       <input type="checkbox" class="valueEdit" field="active"> Active<br>

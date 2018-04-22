@@ -1,0 +1,76 @@
+<template name="Content">
+    {{> LayoutHeader}} {{> LayoutNav}}
+    <div class="page-container">
+        <div class="page-title">
+            {{#with contentHeader}}
+            <p>{{content_type}} {{content_title}}</p>
+            {{/with}}
+        </div>
+        <div class="content-container">
+            <div class="row" style="padding-bottom:10px">
+                <div class="col-md-2">
+                    <button class="btn btn-sm btn-success fa fa-arrow-left" id="btnBack"><span class="btn-label"> ย้อนกลับ</span></button>
+                </div>
+                <div class="col-md-10"></div>
+            </div>
+            {{#with contentHeader}}
+            <div class="card" style="min-height: 250px;word-wrap: break-word;margin-bottom:0px;">
+                <div class="card-header" style="padding-left:10px;font-size:20px">
+                    {{content_title}}
+                </div>
+                <div class="card-body" style="padding:10px;word-wrap: break-word;">
+                    {{{content_detail}}}
+                </div>
+            </div>
+            <div class="row" style="font-size:12px;padding:0 10px;margin-bottom:20px">
+                <div class="col-md-8"></div>
+                <div class="col-md-4 text-right">{{create_by_name}} {{convertDate create_date}}</div>
+            </div>
+            {{/with}}
+            <div class="page-comment">
+                <span class="page-comment-title"><i class="fa fa-comments-o"></i> ความคิดเห็น</span>
+                <div class="page-comment-title-line"></div>
+		    </div>
+            {{#each subContent}}
+            <div style="font-size:12px;padding:0 10px;width:100%;text-align:center">
+                ความคิดเห็นที่ {{getNumberCount @index}}
+            </div>
+            {{#if delete_status}}
+                <div class="card" style="min-height: 50px;text-align: center;word-wrap: break-word;margin-bottom:0px;width:100%;background:#DDD">
+                    <div class="card-body" style="padding:10px;word-wrap: break-word;">
+                        {{{reson_msg}}}
+                    </div>
+                    <!-- <button class="btn btn-sm fa fa-trash-o" style="position:absolute;right: 0;top:0;margin: 5px;{{btnAdminRemove}}" id="btnRemoveComment" content_sub_id="{{content_sub_id}}"></button> -->
+                </div>
+                <div style="font-size:12px;padding:0px;margin-bottom:20px;width:100%">
+                    <div class="text-right">ถูกลบเมื่อ {{convertDate delete_date}}</div>
+                </div>
+            {{else}}
+                <div class="card" style="min-height: 200px;word-wrap: break-word;margin-bottom:0px;width:100%">
+                    <div class="card-body" style="padding:10px;word-wrap: break-word;">
+                        {{{content_detail}}}
+                    </div>
+                    <button class="btn btn-sm fa fa-trash-o" style="position:absolute;right: 0;top:0;margin: 5px;{{btnAdminRemove}}" id="btnRemoveComment" content_sub_id="{{content_sub_id}}"></button>
+                </div>
+                <div style="font-size:12px;padding:0px;margin-bottom:20px;width:100%">
+                    <div class="text-right">{{create_by_name}} {{convertDate create_date}}</div>
+                </div>
+            {{/if}}
+            {{/each}}
+            <div class="card" >
+                <div class="card-body" style="padding:10px;word-wrap: break-word;">
+                    <div id="sub_content_detail"></div>
+                </div>
+                <div class="card-footer" style="padding:10px;word-wrap: break-word;">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2 text-center">
+                        <button class="btn btn-sm btn-success fa fa-paper-plane" id="btnSendAnswer"><span class="btn-label"> ส่ง</span></button>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {{> LayoutFooter}}
+</template>

@@ -1,0 +1,37 @@
+/*****************************************************************************/
+
+/* Content: Style */
+
+/*****************************************************************************/
+
+.page-comment-title-line {
+    position: absolute;
+    border-bottom: solid 1px #000000;
+    top: 16px;
+    left: 0px;
+    width: 100%;
+    left: 0px;
+    z-index: 5;
+    line-height: 1px;
+}
+
+.page-comment-title {
+    color: #000000;
+    background: #edf0f6;
+    position: relative;
+    z-index: 10;
+    padding: 0px 20px 0px 20px;
+    margin-left: 27px;
+    display: inline-block;
+    zoom: 1;
+    white-space: nowrap;
+}
+
+.page-comment {
+    text-align: left;
+    line-height: 30px;
+    font-size: 0.929em;
+    position: relative;
+    padding: 0px;
+    margin: 25px 0px 10px 0px;
+}

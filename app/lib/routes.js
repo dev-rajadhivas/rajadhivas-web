@@ -122,9 +122,14 @@ Router.route('/config', {
   controller: 'HomeController'
 });
 
-
 Router.route('/webboard', {
   name: 'webboard',
+  where: 'client',
+  controller: 'HomeController'
+});
+
+Router.route('/webboard/content/:content_id', {
+  name: 'content',
   where: 'client',
   controller: 'HomeController'
 });
