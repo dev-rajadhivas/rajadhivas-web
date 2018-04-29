@@ -9,12 +9,12 @@
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-4 form-inline" style="text-align:right">
-              <input type="text" class="form-control" style="height:27px;width:200px;" placeholder="Search" id="input_SearchContent">
-              <button class="btn btn-sm btn-success fa fa-search" id="btnSearchContent" ><span class="btn-label"> ค้นหา</span></button>
+              <input type="text" class="form-control" style="height:27px;width:200px;" placeholder="Search" id="inputSearchBoard" onkeypress="enterFunction(event, 'btnSearchBoard')">
+              <button class="btn btn-sm btn-success fa fa-search" id="btnSearchBoard" ><span class="btn-label"> ค้นหา</span></button>
             </div>
           </div>
           <hr>
-          <div class="warpper-table hidden-scroll-y table-responsive bg-white">
+          <div class="warpper-table hidden-scroll-y table-responsive bg-white table-board">
               {{> tabular table=TabularTables.boardcontent selector=filterBoardcontent class="table"}}
           </div>
           <hr>

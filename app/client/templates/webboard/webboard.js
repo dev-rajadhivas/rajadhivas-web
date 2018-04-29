@@ -52,6 +52,9 @@ Template.Webboard.events({
                 swal("แจ้งเตือนจากระบบ", result.msg, "error");
             }
         });
+    },
+    'click #btnSearchBoard': function() {
+      $(".table-board .dataTables_filter input").val($("#inputSearchBoard").val()).keyup()
     }
 });
 
