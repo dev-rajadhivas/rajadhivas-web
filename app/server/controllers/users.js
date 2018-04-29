@@ -57,6 +57,8 @@ Meteor.methods({
         profile.active = true;
         profile.userrole = data.level === "ผู้ดูแลระบบ" ? 1 : data.level === "อาจารย์" ? 2 : data.level === "ผู้ปกครอง" ? 3 : data.level === "นักเรียน" ? 4 : data.level === "บุคคลทั่วไป" ? 5 : 2;
         profile.fullname = (data.prename ? data.prename : "คุณ") + data.firstname + ' ' + data.lastname;
+        profile.news_id = [];
+        profile.favorite_news_id = [];
         createUser.profile = profile;
         var account = Accounts.createUser(createUser);
         return {

@@ -148,8 +148,6 @@ Router.route('/register', {
         // var check = validatePost(_post);
         // console.log(check, _post);
         if (_post.email) {
-            _post.news_id = [];
-            _post.favorite_news_id = [];
             var response_ = Meteor.call("createUserData", _post);
         } else {
             response_ = {

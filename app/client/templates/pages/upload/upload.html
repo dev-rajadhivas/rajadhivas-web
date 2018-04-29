@@ -1,13 +1,15 @@
 <template name="Upload">
     {{> LayoutHeader}} {{> LayoutNav}}
     <div class="page-container">
-        <div class="page-title"><p>ข่าวสาร</p></div>
+        <div class="page-title"><p>จัดการข้อมูลข่าว</p></div>
         <div class="content-container">
             <div class="row">
-              <div class="col-md-2">
+              <div class="col-md-8">
                 <button class="btn btn-sm btn-success fa fa-plus" id="btnAddNews"><span class="btn-label"> เพิ่มข่าว</span></button>
+                <button class="btn btn-sm btn-success fa fa-bookmark" id="btnAdvertise"><span class="btn-label"> ประชาสัมพันธ์</span></button>
+                <button class="btn btn-sm btn-success fa fa-bullhorn" id="btnAnnounce"><span class="btn-label"> ประกาศ</span></button>
+                <button class="btn btn-sm btn-success fa fa-graduation-cap" id="btnActivity"><span class="btn-label"> กิจกรรม</span></button>
               </div>
-              <div class="col-md-6"></div>
               <div class="col-md-4 form-inline" style="text-align:right">
                 <input type="text" class="form-control" style="height:27px;width:200px;" placeholder="Search" id="input_SearchNews" onkeypress="enterFunction(event, 'btnSearchNews')">
                 <button class="btn btn-sm btn-success fa fa-search" id="btnSearchNews" ><span class="btn-label"> ค้นหา</span></button>

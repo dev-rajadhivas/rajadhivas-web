@@ -7,6 +7,9 @@ TabularTables.boardcontent = new Tabular.Table({
     collection: Boardcontent,
     responsive: true,
     autoWitdh: false,
+    order: [
+        [0, 'asc']
+    ],
     columns: [{
         title: "No.",
         data: "content_id"
