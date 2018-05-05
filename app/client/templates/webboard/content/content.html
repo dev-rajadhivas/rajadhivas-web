@@ -21,10 +21,17 @@
                 <div class="card-body" style="padding:10px;word-wrap: break-word;">
                     {{{content_detail}}}
                 </div>
+                <button class="btn btn-sm fa fa-pencil" style="position:absolute;right: 0;top: 20%;margin: 5px;{{btnEditBoardContent create_by}}" id="btnEditBoardContent" content_id="{{content_id}}"></button>
             </div>
             <div class="row" style="font-size:12px;padding:0 10px;margin-bottom:20px">
                 <div class="col-md-8"></div>
-                <div class="col-md-4 text-right">{{create_by_name}} {{convertDate create_date}}</div>
+                <div class="col-md-4 text-right">
+                    {{#if update_status}}
+                        {{update_by_name}} {{convertDate update_date}} (แก้ไข)
+                    {{else}}
+                        {{create_by_name}} {{convertDate create_date}}
+                    {{/if}}
+                </div>
             </div>
             {{/with}}
             <div class="page-comment">
@@ -50,10 +57,15 @@
                     <div class="card-body" style="padding:10px;word-wrap: break-word;">
                         {{{content_detail}}}
                     </div>
+                    <button class="btn btn-sm fa fa-pencil" style="position:absolute;right: 35px;top:0;margin: 5px;{{btnEditComment create_by}}" id="btnEditComment" content_sub_id="{{content_sub_id}}"></button>
                     <button class="btn btn-sm fa fa-trash-o" style="position:absolute;right: 0;top:0;margin: 5px;{{btnAdminRemove}}" id="btnRemoveComment" content_sub_id="{{content_sub_id}}"></button>
                 </div>
                 <div style="font-size:12px;padding:0px;margin-bottom:20px;width:100%">
-                    <div class="text-right">{{create_by_name}} {{convertDate create_date}}</div>
+                    {{#if update_status}}
+                        <div class="text-right">{{update_by_name}} {{convertDate update_date}} (แก้ไข)</div>
+                    {{else}}
+                        <div class="text-right">{{create_by_name}} {{convertDate create_date}}</div>
+                    {{/if}}
                 </div>
             {{/if}}
             {{/each}}

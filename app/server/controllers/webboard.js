@@ -102,5 +102,31 @@ Meteor.methods({
             $set: data
         })
         return result;
+    },
+    edit_board_sub_content: function(data) {
+        var result = {
+            status: true,
+            msg: "แก้ไขข้อมูลเสร็จสบบูรณ์"
+        }
+        data.update_date = new Date();
+        Subboardcontent.update({
+            content_sub_id: data.content_sub_id
+        }, {
+            $set: data
+        })
+        return result;
+    },
+    edit_board_content: function(data) {
+        var result = {
+            status: true,
+            msg: "แก้ไขข้อมูลเสร็จสบบูรณ์"
+        }
+        data.update_date = new Date();
+        Boardcontent.update({
+            content_id: data.content_id
+        }, {
+            $set: data
+        })
+        return result;
     }
 });

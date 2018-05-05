@@ -1,68 +1,68 @@
 <template name="Createcontent">
-<div class="modal fade">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header page-title">
-                <h4 class="modal-title">กระดานสนทนา</h4>
-            </div>
-            <div class="modal-body" style="{{getHightWindows}}">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-2" style="text-align:right">
-                            <h6>หมวดหมู่</h6>
+    <div class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header page-title">
+                    <h4 class="modal-title">กระดานสนทนา</h4>
+                </div>
+                <div class="modal-body" style="{{getHightWindows}}">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2" style="text-align:right">
+                                <h6>หมวดหมู่</h6>
+                            </div>
+                            <div class="col-md-10">
+                                <select class="form-control form-control-sm create_content" id="content_type" field="content_type" style="float: right;">
+                                    <option value="ทักทาย">ทักทาย</option>
+                                    <option value="การเรียน">การเรียน</option>
+                                    <option value="สอบถาม">สอบถาม</option>
+                                    <option value="พูดคุย">พูดคุย</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-md-10">
-                            <select class="form-control form-control-sm create_content" id="content_type" field="content_type" style="float: right;">
-                                <option value="ทักทาย">ทักทาย</option>
-                                <option value="การเรียน">การเรียน</option>
-                                <option value="สอบถาม">สอบถาม</option>
-                                <option value="พูดคุย">พูดคุย</option>
-                            </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2" style="text-align:right">
+                                <h6>ชื่อหัวข้อ</h6>
+                            </div>
+                            <div class="col-md-10">
+                                <input class="form-control orm-control-sm create_content" type="text" id="content_title" field="content_title">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2" style="text-align:right">
+                                <h6>ลายละเอียด</h6>
+                            </div>
+                            <div class="col-md-10">
+                                <div id="content_detail"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2" style="text-align:right">
+                            </div>
+                            <div class="col-md-10">
+                                <label class="radio-inline"><input type="radio" name="active_permission" value=false checked>ทั่วไป</label>
+                                <label class="radio-inline"><input type="radio" name="active_permission" value=true {{checkCurrentRoomNull}}>เฉพาะชั้นปี</label>
+                                <select class="radio-inline create_content" id="room_id" field="room_id" field-type="int" {{checkAdminPermission}}>
+                                    <option value=0 selected>-</option>
+                                    {{#each genRoomList}}
+                                    <option value="{{room_id}}" {{checkCurrentRoom room_id}}>{{room_name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-2" style="text-align:right">
-                            <h6>ชื่อหัวข้อ</h6>
-                        </div>
-                        <div class="col-md-10">
-                            <input class="form-control orm-control-sm create_content" type="text" id="content_title" field="content_title">
-                        </div>
-                    </div>
+                <div class="modal-footer form-inline">
+                    <button class="btn btn-danger fa fa-sign-out" data-dismiss="modal"></button>
+                    <button class="btn btn-success fa fa-floppy-o" id="btnCreateContent"></button>
                 </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-2" style="text-align:right">
-                            <h6>ลายละเอียด</h6>
-                        </div>
-                        <div class="col-md-10">
-                            <div id="content_detail"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-2" style="text-align:right">
-                        </div>
-                        <div class="col-md-10">
-                            <label class="radio-inline"><input type="radio" name="active_permission" value=false checked>ทั่วไป</label>
-                            <label class="radio-inline"><input type="radio" name="active_permission" value=true {{checkCurrentRoomNull}}>เฉพาะชั้นปี</label>
-                            <select class="radio-inline create_content" id="room_id" field="room_id" field-type="int" {{checkAdminPermission}}>
-                                <option value=0 selected>-</option>
-                                {{#each genRoomList}}
-                                <option value="{{room_id}}" {{checkCurrentRoom room_id}}>{{room_name}}</option>
-                                {{/each}}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer form-inline">
-                <button class="btn btn-danger fa fa-sign-out" data-dismiss="modal"></button>
-                <button class="btn btn-success fa fa-floppy-o" id="btnCreateContent"></button>
             </div>
         </div>
     </div>
-</div>
 </template>

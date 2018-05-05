@@ -60,6 +60,16 @@ Template.Content.events({
                     }
                 });
             });
+    },
+    'click #btnEditComment': function(e) {
+        var content_sub_id = parseInt($(e.target).attr('content_sub_id'));
+        Session.set('content_sub_id', content_sub_id);
+        Modal.show('Editsubcontent');
+    },
+    'click #btnEditBoardContent': function(e) {
+        var content_id = parseInt(Router.current().params.content_id);
+        Session.set('content_id', content_id);
+        Modal.show('Editwebboardcontent');
     }
 });
 
@@ -80,10 +90,19 @@ Template.Content.helpers({
         return num + 1
     },
     btnAdminRemove: function() {
-        var result = "";
-        if (Meteor.user().profile.userrole != 1) {
-            result = "display: none;";
-        }
+        var result = "display: none;";
+        if (Meteor.user().profile.userrole == 1) result = "";
+        return result;
+    },
+    btnEditComment: function(user_id) {
+        var result = "display: none;";
+        if (Meteor.user().profile.user_id == user_id || Meteor.user().profile.userrole == 1) result = "";
+        return result;
+    },
+    btnEditBoardContent: function(user_id) {
+        console.log(user_id);
+        var result = "display: none;";
+        if (Meteor.user().profile.user_id == user_id || Meteor.user().profile.userrole == 1) result = "";
         return result;
     }
 });
@@ -92,6 +111,8 @@ Template.Content.helpers({
 /* Content: Lifecycle Hooks */
 /*****************************************************************************/
 Template.Content.onCreated(function() {
+    Session.set('sub_content_id', 0);
+    Session.set('content_id', 0);
     var content_id = parseInt(Router.current().params.content_id);
     Modal.show('Loading');
     var subready = this.subscribe('ContentData', content_id, {

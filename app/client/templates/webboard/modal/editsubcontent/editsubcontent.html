@@ -1,0 +1,18 @@
+<template name="Editsubcontent">
+    <div class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header page-title">
+                    <h4 class="modal-title">แก้ไข</h4>
+                </div>
+                <div class="modal-body" style="{{getHightWindows}}">
+                    <div id="webboard_sub_content_detail">{{{genSubContentDetail}}}</div>
+                </div>
+                <div class="modal-footer form-inline">
+                    <button class="btn btn-danger fa fa-sign-out" data-dismiss="modal"></button>
+                    <button class="btn btn-success fa fa-floppy-o" id="btnEditSubContent"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
