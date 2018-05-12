@@ -1,7 +1,6 @@
 import Tabular from 'meteor/aldeed:tabular';
 TabularTables = {};
 
-
 TabularTables.boardcontent = new Tabular.Table({
     name: "boardcontent",
     collection: Boardcontent,
@@ -12,7 +11,9 @@ TabularTables.boardcontent = new Tabular.Table({
     ],
     columns: [{
         title: "No.",
-        data: "content_id"
+        render: function(a, b, c, d) {
+            return d.row + 1
+        }
     }, {
         title: "หัวข้อ",
         data: "content_title"
@@ -38,7 +39,7 @@ TabularTables.boardcontent = new Tabular.Table({
         data: "_id",
         title: "การจัดการ",
         render: function(val, type, doc) {
-            var html = "<button style='margin-left:6px' class='btn btn-sm btn-success fa fa-eye' id='btnReadContent' _id=" + val + " content_id=" + doc.content_id + "></button>";
+            var html = "<button style='margin-left:6px' class='btn btn-sm btn-warning fa fa-pencil-square-o' id='btnReadContent' _id=" + val + " content_id=" + doc.content_id + "></button>";
             html += "<button style='margin-left:6px' class='btn btn-sm btn-danger fa fa-trash-o' id='btnDeleteContent' _id=" + val + " content_id=" + doc.content_id + "></button>";
             return html
         }

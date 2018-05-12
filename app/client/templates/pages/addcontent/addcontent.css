@@ -2,4 +2,11 @@
 /* Addcontent: Style */
 /*****************************************************************************/
 .addcontent {
+
+}
+
+select.select-add-news::-ms-expand {	display: none; }
+select.select-add-news{
+    -webkit-appearance: none;
+    appearance: none;
 }

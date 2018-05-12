@@ -11,10 +11,10 @@ Template.Addcontent.events({
             message: "คุณแน่ใจ ใช่ หรือไม่",
             buttons: {
                 cancel: {
-                    label: '<i class="fa fa-times"></i> Cancel'
+                    label: '<i class="fa fa-times"></i> ยกเลิก'
                 },
                 confirm: {
-                    label: '<i class="fa fa-check"></i> Confirm'
+                    label: '<i class="fa fa-check"></i> ตกลง'
                 }
             },
             callback: function(result) {

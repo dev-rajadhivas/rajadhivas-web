@@ -8,7 +8,7 @@ Meteor.methods({
         var result = {};
         result.total = userDB.length;
         result.total_master = _.filter(userDB, function(data) {
-            return data.profile.level == "อาจารย์"
+            return data.profile.level == "ครู"
         }).length;
         result.total_student = _.filter(userDB, function(data) {
             return data.profile.level == "นักเรียน"
@@ -55,12 +55,14 @@ Meteor.methods({
         var profile = data;
         profile.user_id = autoInc('user_id');
         profile.active = true;
-        profile.userrole = data.level === "ผู้ดูแลระบบ" ? 1 : data.level === "อาจารย์" ? 2 : data.level === "ผู้ปกครอง" ? 3 : data.level === "นักเรียน" ? 4 : data.level === "บุคคลทั่วไป" ? 5 : 2;
+        profile.userrole = data.level === "ผู้ดูแลระบบ" ? 1 : data.level === "ครู" ? 2 : data.level === "ผู้ปกครอง" ? 3 : data.level === "นักเรียน" ? 4 : data.level === "บุคคลทั่วไป" ? 5 : 2;
         profile.fullname = (data.prename ? data.prename : "คุณ") + data.firstname + ' ' + data.lastname;
         profile.news_id = [];
         profile.favorite_news_id = [];
         createUser.profile = profile;
+        console.log(createUser);
         var account = Accounts.createUser(createUser);
+        console.log(account);
         return {
             status: true,
             msg: 'สร้างผู้ใช้เสร็จสมบูรณ์'
@@ -85,7 +87,7 @@ Meteor.methods({
         // สร้าง User
         var updateUser = {};
         var profile = data;
-        profile.userrole = data.level === "ผู้ดูแลระบบ" ? 1 : data.level === "อาจารย์" ? 2 : data.level === "ผู้ปกครอง" ? 3 : data.level === "นักเรียน" ? 4 : data.level === "บุคคลทั่วไป" ? 5 : 2;
+        profile.userrole = data.level === "ผู้ดูแลระบบ" ? 1 : data.level === "ครู" ? 2 : data.level === "ผู้ปกครอง" ? 3 : data.level === "นักเรียน" ? 4 : data.level === "บุคคลทั่วไป" ? 5 : 2;
         profile.fullname = (data.prename ? data.prename : "คุณ") + data.firstname + ' ' + data.lastname;
         updateUser.profile = profile;
         Meteor.users.update({
