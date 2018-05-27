@@ -37,6 +37,8 @@ Meteor.methods({
                 username: data.username
             }, {
                 'profile.email': data.email
+            }, {
+                'emails.address': data.email
             }]
         });
         if (checkDupUser) {

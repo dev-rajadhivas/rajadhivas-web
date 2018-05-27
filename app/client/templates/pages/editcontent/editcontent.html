@@ -2,115 +2,111 @@
   <div class="modal fade bd-example-modal-lg" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="page-title">
-            <h4>แก้ไข</h4>
-        </div>
-        {{#with detail_news}}
-        <div style="padding:10px">
-            <div class="form-group" style="margin:0px">
-              <div class="row">
-                <div class="col-md-2" style="text-align:right"></div>
-                <div class="col-md-10">
-                    <span style="color:red">* แนะนำไฟล์ .jpg .png ขนาดไม่เกิน 1MB</span>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="row">
-                <div class="col-md-2" style="text-align:right">
-                  <h6>อัพโหลดรูปภาพ :</h6>
-                </div>
-                <div class="col-md-10">
-                    <div class="imgupload">
-                        <form method="post">
-                            <div class="img-upload" style="text-align: center;width: 100%;height: 200px;border: solid 1px #ddd;border-bottom: 0px;background-color: #ddd;">
-                                <img src="{{path}}" class="imagepreview" id='imagepreview_update'>
-                            </div>
-                            <div class="input-group">
-                                <input type="text" name="page" value="/news/" hidden>
-                                <input type="text" id='news_id' name="id" value="{{news_id}}" hidden>
-                                <input type="text" id='type' name="type" value="jpg" hidden>
-                                <input type="text" name='checkfunction' value="update_news2" hidden>
-                                <input type="text" class="form-control form-control-sm textShowFilename" readonly="" style="display:none;">
-                                <label class="input-group-btn">
-                                    <span class="btn btn-primary btnbrowse" style="width:100%;" id='btnbrowse'>Browse… <input class='jqUploadclass' type="file" style="display: none;" accept="image/*" multiple="" OnChange="showPreview(this)"></span>
-                                    <button id='startuploadfile_update' hidden></button>
-                                </label>
-                            </div>
-                        </form>
+          {{#with detail_news}}
+          <div class="modal-header page-title">
+              <h4 class="modal-title">แก้ไข</h4>
+          </div>
+          <div class="modal-body rem-pad" style="{{getHightWindows}}">
+              <div style="padding:10px">
+                  <div class="form-group" style="margin:0px">
+                    <div class="row">
+                      <div class="col-md-2" style="text-align:right"></div>
+                      <div class="col-md-10">
+                          <span style="color:red">* แนะนำไฟล์ .jpg .png ขนาดไม่เกิน 1MB</span>
+                      </div>
                     </div>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="row">
-                <div class="col-md-10"></div>
-                <div class="col-md-2">
-                  <select class="form-control form-control-sm" id="category_id" field="category" data-id="{{category_id}}" style="float: right;height: 27px;">
-                    <option value="1">ข่าวสาร</option>
-                    <!-- <option value="บทความ">บทความ</option> -->
-                    <option value="2">ประชาสัมพันธ์</option>
-                    <option value="3">กิจกกรม</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="row">
-                <div class="col-md-2" style="text-align:right">
-                  <h6>หัวข้อ :</h6>
-                </div>
-                <div class="col-md-10">
-                  <input class="form-control" style="height: 27px;" type="text" value="{{title}}" id="input_title">
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="row">
-                <div class="col-md-2" style="text-align:right">
-                  <h6>เนื้อหา :</h6>
-                </div>
-                <div class="col-md-10">
-                  <div id="summernote{{news_id}}">{{{content}}}</div>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="row">
-                <div class="col-md-2" style="text-align:right">
-                  <h6>วันหมดอายุ :</h6>
-                </div>
-                <div class="col-md-10">
-                  <input class="form-control" type="text" id="expiry_date" field="expiry_date">
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="row">
-                <div class="col-md-2" style="text-align:right">
-                  <h6>Upload Status :</h6>
-                </div>
-                <div class="col-md-10">
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="{{progress true}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}">
-                      {{progress}}
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-2" style="text-align:right">
+                        <h6>อัพโหลดรูปภาพ :</h6>
+                      </div>
+                      <div class="col-md-10">
+                          <div class="imgupload">
+                              <form method="post">
+                                  <div class="img-upload" style="text-align: center;width: 100%;height: 200px;border: solid 1px #ddd;border-bottom: 0px;background-color: #ddd;">
+                                      <img src="{{path}}" class="imagepreview" id='imagepreview_update'>
+                                  </div>
+                                  <div class="input-group">
+                                      <input type="text" name="page" value="/news/" hidden>
+                                      <input type="text" id='news_id' name="id" value="{{news_id}}" hidden>
+                                      <input type="text" id='type' name="type" value="jpg" hidden>
+                                      <input type="text" name='checkfunction' value="update_news2" hidden>
+                                      <input type="text" class="form-control form-control-sm textShowFilename" readonly="" style="display:none;">
+                                      <label class="input-group-btn">
+                                          <span class="btn btn-primary btnbrowse" style="width:100%;" id='btnbrowse'>Browse… <input class='jqUploadclass' type="file" style="display: none;" accept="image/*" multiple="" OnChange="showPreview(this)"></span>
+                                          <button id='startuploadfile_update' hidden></button>
+                                      </label>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-10"></div>
+                      <div class="col-md-2">
+                        <select class="form-control form-control-sm select-add-news" id="category_id" field="category" data-id="{{category_id}}" style="float: right;height: 27px;" disabled>
+                          <option value="1">ประกาศ</option>
+                          <!-- <option value="บทความ">บทความ</option> -->
+                          <option value="2">ประชาสัมพันธ์</option>
+                          <option value="3">กิจกรรม</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-2" style="text-align:right">
+                        <h6>หัวข้อ :</h6>
+                      </div>
+                      <div class="col-md-10">
+                        <input class="form-control" style="height: 27px;" type="text" value="{{title}}" id="input_title">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-2" style="text-align:right">
+                        <h6>เนื้อหา :</h6>
+                      </div>
+                      <div class="col-md-10">
+                        <div id="summernote{{news_id}}">{{{content}}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-2" style="text-align:right">
+                        <h6>วันหมดอายุ :</h6>
+                      </div>
+                      <div class="col-md-10">
+                        <input class="form-control" type="text" id="expiry_date" field="expiry_date">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-2" style="text-align:right">
+                        <h6>Upload Status :</h6>
+                      </div>
+                      <div class="col-md-10">
+                        <div class="progress">
+                          <div class="progress-bar" role="progressbar" aria-valuenow="{{progress true}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress}}">
+                            {{progress}}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="row">
-                <div class="col-md-5"></div>
-                <div class="col-md-2" style="text-align:center">
-                  <button class="btn btn-danger fa fa-sign-out" id="cancel"></button>
-                  <button class="save_changes btn btn-success fa fa-floppy-o" id="btnEdit" data-id="{{news_id}}" data-path="{{path}}"></button>
-                </div>
-                <div class="col-md-5"></div>
-              </div>
-            </div>
           </div>
-        {{/with}}
+          <div class="modal-footer form-inline">
+              <button class="btn btn-danger fa fa-sign-out" id="cancel"></button>
+              <button class="save_changes btn btn-success fa fa-floppy-o" id="btnEdit" data-id="{{news_id}}" data-path="{{path}}"></button>
+          </div>
+          {{/with}}
       </div>
     </div>
   </div>

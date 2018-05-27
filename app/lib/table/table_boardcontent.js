@@ -7,8 +7,9 @@ TabularTables.boardcontent = new Tabular.Table({
     responsive: true,
     autoWitdh: false,
     order: [
-        [0, 'asc']
+        [4, 'desc']
     ],
+    extraFields: ['content_id'],
     columns: [{
         title: "No.",
         render: function(a, b, c, d) {

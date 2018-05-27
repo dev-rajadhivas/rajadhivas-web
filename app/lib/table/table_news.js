@@ -8,6 +8,7 @@ TabularTables.newsList = new Tabular.Table({
   responsive: true,
   autoWidth: false,
   extraFields: ['path', 'content', 'category_id', 'category', 'hotnews', 'expiry_date'],
+  order: [[2, "desc"]],
   columns: [{
     data: "category",
     title: "ประเภท",

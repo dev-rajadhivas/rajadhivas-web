@@ -3,3 +3,7 @@
     margin: 0 5px !important;
     min-width: 10px !important;
 }
+
+.note-group-select-from-files {
+    display: none !important;
+}
