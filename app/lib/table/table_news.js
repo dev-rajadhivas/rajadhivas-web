@@ -12,6 +12,7 @@ TabularTables.newsList = new Tabular.Table({
   columns: [{
     data: "category",
     title: "ประเภท",
+    orderable: false
   }, {
     data: "title",
     title: "หัวข้อ",
@@ -24,6 +25,7 @@ TabularTables.newsList = new Tabular.Table({
   }, {
     data: "news_id",
     title: "การจัดการ",
+    orderable: false,
     render: function(val, type, doc) {
       var html = "<button  style='margin-left:6px' class='btn btn-sm btnEditNews btn-warning fa fa-pencil-square-o' news_id=" + val + "></button>"
       html += "<button  style='margin-left:6px' class='btn btn-sm btn_DeleteNews btn-danger fa fa-trash-o' news_id=" + doc._id + "></button>"

@@ -39,6 +39,7 @@ TabularTables.boardcontent = new Tabular.Table({
     }, {
         data: "_id",
         title: "การจัดการ",
+        orderable: false,
         render: function(val, type, doc) {
             var html = "<button style='margin-left:6px' class='btn btn-sm btn-warning fa fa-pencil-square-o' id='btnReadContent' _id=" + val + " content_id=" + doc.content_id + "></button>";
             html += "<button style='margin-left:6px' class='btn btn-sm btn-danger fa fa-trash-o' id='btnDeleteContent' _id=" + val + " content_id=" + doc.content_id + "></button>";

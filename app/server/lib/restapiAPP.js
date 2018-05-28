@@ -26,6 +26,7 @@ Router.route('/queryNews', {
         // if (check) {
         var _post = this.request.body;
         var dataNews = News.find().fetch();
+        // var dataNews = News.find({ expiry_date: { $gte: new Date() } });
         // response_ = { status: true, data: dataNews };
         response_.status = true;
         response_.data = dataNews.length > 0 ? dataNews : [];
@@ -438,7 +439,7 @@ Router.route('/BoardList', {
         var response_ = new Object();
         var _post = this.request.body;
         if (_post.room_id || _post.room_id === null) {
-        	console.log(_post.room_id)
+            console.log(_post.room_id)
             // var data = Boardcontent.find({ room_id: _post.room_id, active_permission: _post.active_permission }).fetch();
             var data = Boardcontent.find({
                 $or: [{

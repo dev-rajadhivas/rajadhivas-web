@@ -4,6 +4,6 @@
     min-width: 10px !important;
 }
 
-.note-group-select-from-files {
+.note-group-select-from-files, .note-style, .note-table, .note-view, button[data-original-title="Video"] {
     display: none !important;
 }

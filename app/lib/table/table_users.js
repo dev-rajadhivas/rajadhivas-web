@@ -34,6 +34,7 @@ TabularTables.usersList = new Tabular.Table({
     }, {
         data: "_id",
         title: "การจัดการ",
+        orderable: false,
         render: function(val, type, doc) {
             var html = "<button style='margin-left:6px' class='btn btn-sm btn-warning fa fa-pencil-square-o' id='btnEditUser' _id=" + val + "></button>";
             html += "<button style='margin-left:6px' class='btn btn-sm btn-danger fa fa-unlock-alt' id='btnChangePasswordUser' _id=" + val + "></button>";
